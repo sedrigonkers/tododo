@@ -13,37 +13,45 @@ const styles = StyleSheet.create({
         height: ScreenHeight,
     },
     container: {
-        height: 100 + '%'
+        height: 100 + '%',
     },
 
     header: {
         width: 100 + '%',
-        height: 20 + '%', 
+        height: 15 + '%',
         backgroundColor: '#9F6868',
-        borderRadius: 20,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
         position: 'relative',
     },
     headerInner: {
         position: 'relative',
-        top: 40 + '%'
     },
     headerLogo: {
         fontFamily: 'PacificoRegular',
-        fontSize: 44,
+        fontSize: 24,
         textAlign: 'center',
-        color: '#FFFFFF'
+        color: '#FFFFFF',
+    },
+
+    notes: {
+        marginLeft: 15,
+        marginRight: 15,
     },
 
     noteContainer: {
-        padding: 10
+        padding: 15
     },
     noteTitle: {
         fontFamily: 'LatoBold',
-        fontSize: 18
+        fontSize: 18,
+        color: '#9F6868',
+        marginBottom: 5,
     },
     noteContent: {
         fontFamily: 'LatoRegular',
-        fontSize: 16
+        fontSize: 16,
+        color: '#9F6868',
     }
 
 });

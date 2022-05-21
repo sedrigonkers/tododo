@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { useFonts } from 'expo-font'
-import { Font } from 'expo'
 import Main from './Components/Main'
 import styles from './styles'
 
