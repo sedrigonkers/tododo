@@ -4,6 +4,18 @@ let ScreenHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
 
+    wrapper: {
+        flex: 1,
+        backgroundColor: '#FDF5F5',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        width: 100 + '%',
+        height: ScreenHeight,
+    },
+    container: {
+        height: 100 + '%'
+    },
+
     header: {
         width: 100 + '%',
         height: 20 + '%', 
@@ -13,7 +25,7 @@ const styles = StyleSheet.create({
     },
     headerInner: {
         position: 'relative',
-        top: 50 + '%'
+        top: 40 + '%'
     },
     headerLogo: {
         fontFamily: 'PacificoRegular',
@@ -21,17 +33,19 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#FFFFFF'
     },
-    container: {
-        height: 100 + '%'
+
+    noteContainer: {
+        padding: 10
     },
-    wrapper: {
-        flex: 1,
-        backgroundColor: '#FDF5F5',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        width: 100 + '%',
-        height: ScreenHeight,
+    noteTitle: {
+        fontFamily: 'LatoBold',
+        fontSize: 18
     },
+    noteContent: {
+        fontFamily: 'LatoRegular',
+        fontSize: 16
+    }
+
 });
 
 export default styles
