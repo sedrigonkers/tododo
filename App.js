@@ -1,8 +1,10 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import { useFonts } from 'expo-font'
 import Main from './Components/Main'
 import styles from './styles'
+
 
 
 export default function App() {
