@@ -3,23 +3,33 @@ import styles from '../styles'
 import React from 'react'
 import CheckBox from 'expo-checkbox'
 
-export default function Note(props) {
+export default function Note({ title, content, id, dispatch }) {
 
-  const [value, setValue] = React.useState(true)
+  const [isDone, setIsDone] = React.useState(true)
+
+  React.useEffect(() => {
+    dispatch({ type: 'change-note-section', payload: { id: id } })
+
+  }, [isDone])
 
   return (
     <View style={styles.noteContainer}>
+
       <Text style={styles.noteTitle}>
-        {props.title || <Text>component doesn't have data to show</Text>}
+        {title}
       </Text>
+
       <Text style={styles.noteContent}>
-        {props.content || <Text>component doesn't have data to show</Text>}
+        {content}
       </Text>
+
       <CheckBox
-        value={value}
-        onValueChange={setValue}
+        style={styles.checkBox}
+        value={isDone}
+        onValueChange={setIsDone}
         color='#9F6868'
       />
+
     </View>
   )
 }
