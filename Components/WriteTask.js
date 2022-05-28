@@ -9,15 +9,16 @@ import {
     Keyboard
 } from 'react-native';
 
-const WriteTask = ({taskItems, setTaskItems}) => {
+const WriteTask = ({ dispatch }) => {
 
     const [task, setTask] = React.useState('')
 
+    const ADD_TASK = {
+        type: 'add-task',
+        payload: { text: task }
+    }
     const handleAddTask = () => {
-        if (task.trim()) {
-            Keyboard.dismiss()
-            setTaskItems([...taskItems, { text: task.trim() }])
-        }
+        dispatch(ADD_TASK)
         setTask('')
     }
 

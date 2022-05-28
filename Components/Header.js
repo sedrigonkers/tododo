@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         fontFamily: 'PacificoRegular',
+        paddingHorizontal: 20
     },
 
     date: {

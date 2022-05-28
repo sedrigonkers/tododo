@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import CheckBox from 'expo-checkbox';
 
-const Task = (props) => {
+const Task = ({ dispatch, title, id }) => {
 
     const [isDone, setIsDone] = React.useState(false)
 
@@ -61,14 +61,22 @@ const Task = (props) => {
         }
     })
 
+    const DELETE_TASK = {
+        type: 'delete-task',
+        payload: { id: id }
+    }
+
+    const handleDeleteTask = () => {
+        dispatch(DELETE_TASK)
+    }
 
     return (
         <View style={styles.task}>
 
-            <Text style={styles.taskText}>{props.title}</Text>
+            <Text style={styles.taskText}>{title}</Text>
 
             <View style={styles.icons}>
-                <TouchableOpacity style={styles.deleteButton} onPress={() => { }}>
+                <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteTask}>
                     <Image style={styles.deleteIcon} source={require('../assets/icons/trash.png')} />
                 </TouchableOpacity>
                 <CheckBox
@@ -80,7 +88,6 @@ const Task = (props) => {
             </View>
         </View>
     );
-
 
 }
 
