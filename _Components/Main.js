@@ -15,7 +15,7 @@ function Main() {
         <View style={styles.container}>
             <Header />
             <AddNote dispatch={dispatch} state={state}/>
-            <Notes dispatch={dispatch} state={state} sectionsData={store.getSectionsState(state)}/>
+            <Notes dispatch={dispatch} state={state} sectionsData={{}}/>
         </View>
     )
 }

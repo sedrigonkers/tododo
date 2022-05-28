@@ -4,8 +4,8 @@ export default function reducer(state, action) {
             return [...state, { title: action.payload.title, content: action.payload.content, id: 4, isDone: true },]
 
         case 'change-note-section':
-            // return console.log(state.filter((el) => el.id === action.payload.id))
-            // return console.log(state)
+            console.log(state.indexOf())
+            return [...state, ]
 
         default:
             return state

@@ -1,11 +1,10 @@
-import Checkbox from 'expo-checkbox';
 import { StyleSheet, Dimensions } from 'react-native';
 
 let ScreenHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
 
-    wrapper: {
+    container: {
         flex: 1,
         backgroundColor: '#FDF5F5',
         // alignItems: 'center',
@@ -13,11 +12,10 @@ const styles = StyleSheet.create({
         width: 100 + '%',
         height: ScreenHeight,
     },
-    container: {
+    wrapper: {
     },
 
     header: {
-        width: 100 + '%',
         height: ScreenHeight * 0.15,
         backgroundColor: '#9F6868',
         borderBottomLeftRadius: 10,
