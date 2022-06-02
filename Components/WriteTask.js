@@ -6,7 +6,8 @@ import {
     TextInput,
     TouchableOpacity,
     Image,
-    Keyboard
+    Keyboard,
+    Platform
 } from 'react-native';
 
 const WriteTask = ({ dispatch }) => {
@@ -24,7 +25,7 @@ const WriteTask = ({ dispatch }) => {
 
     return (
         <KeyboardAvoidingView
-            // behavior={Platform.OS === "ios" ? "padding" : "height"}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.writeTaskWrapper} >
 
             <View style={styles.inputWrapper}>
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
     },
 
     input: {
+        fontSize: 16,
         backgroundColor: '#FFFFFF',
         borderRadius: 100,
         borderWidth: 2,
@@ -75,6 +77,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#9F6868',
         borderRadius: 100,
         padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     plus: {

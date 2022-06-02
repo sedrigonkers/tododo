@@ -35,18 +35,21 @@ const Task = ({ dispatch, title, id }) => {
             fontSize: 16,
             width: '80%',
             display: 'flex',
-            fontFamily: 'RobotoRegular',
+            fontFamily: 'RobotoMedium',
             flexWrap: 'wrap',
             opacity: isDone ? 0.3 : 1
         },
         deleteIcon: {
             width: 20,
             height: 20,
+            
         },
         deleteButton: {
             display: 'flex',
-            width: 20,
-            height: 20,
+            width: 25,
+            height: 25,
+            alignItems: 'center',
+            justifyContent: 'center',
         },
 
         icons: {
@@ -56,8 +59,8 @@ const Task = ({ dispatch, title, id }) => {
 
         checkbox: {
             marginLeft: 15,
-            width: 22,
-            height: 22,
+            width: 25,
+            height: 25,
         }
     })
 

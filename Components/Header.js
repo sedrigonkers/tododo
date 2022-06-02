@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, Image, Modal, Button } from 'react-native';
+import { BlurView } from 'expo-blur'
 import moment from 'moment'
 
 
-const Header = () => {
+const Header = ({modalVisible, setModalVisible}) => {
 
     const date = moment().format('ddd') + ', ' + moment().format('MMMM') + ' ' + moment().format('Do')
 
@@ -11,8 +12,9 @@ const Header = () => {
         <View style={styles.header}>
 
             <Text style={styles.date}>{date}</Text>
-            <TouchableOpacity style={styles.more} onPress={() => { }}>
-                <Image style={styles.icon} source={require('../assets/icons/more.png')} />
+
+            <TouchableOpacity style={styles.addTaskButton} onPress={() => setModalVisible(!modalVisible)}>
+                <Image style={styles.addTaskIcon} source={require('../assets/icons/plus.png')} />
             </TouchableOpacity>
 
         </View>
@@ -30,21 +32,27 @@ const styles = StyleSheet.create({
     },
 
     date: {
+        flex: 1,
         fontSize: 24,
         display: 'flex',
         fontFamily: 'PacificoRegular'
     },
 
-    more: {
-        width: 25,
-        height: 20,
+    addTaskButton: {
+        width: 50,
+        height: 50,
         display: 'flex',
+        borderRadius: 100,
+        backgroundColor: '#9F6868',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
-    icon: {
+    addTaskIcon: {
         width: 25,
-        height: 20,
+        height: 25,
     },
+
 })
 
 export default Header;
