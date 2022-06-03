@@ -4,7 +4,7 @@ import { BlurView } from 'expo-blur'
 import moment from 'moment'
 
 
-const Header = ({modalVisible, setModalVisible}) => {
+const Header = ({ modalVisible, setModalVisible }) => {
 
     const date = moment().format('ddd') + ', ' + moment().format('MMMM') + ' ' + moment().format('Do')
 
@@ -14,7 +14,7 @@ const Header = ({modalVisible, setModalVisible}) => {
             <Text style={styles.date}>{date}</Text>
 
             <TouchableOpacity style={styles.addTaskButton} onPress={() => setModalVisible(!modalVisible)}>
-                <Image style={styles.addTaskIcon} source={require('../assets/icons/plus.png')} />
+                <Image style={styles.addTaskIcon} source={require('../assets/icons/undotted_pencil.png')} />
             </TouchableOpacity>
 
         </View>
@@ -33,17 +33,16 @@ const styles = StyleSheet.create({
 
     date: {
         flex: 1,
-        fontSize: 24,
+        fontSize: 30,
         display: 'flex',
-        fontFamily: 'PacificoRegular'
+        fontFamily: 'RobotoBold',
+        color: '#343434',
     },
 
     addTaskButton: {
         width: 50,
         height: 50,
         display: 'flex',
-        borderRadius: 100,
-        backgroundColor: '#9F6868',
         alignItems: 'center',
         justifyContent: 'center',
     },

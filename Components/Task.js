@@ -22,9 +22,9 @@ const Task = ({ dispatch, title, id }) => {
             borderWidth: 2,
             borderRadius: 10,
 
-            paddingHorizontal: 20,
-            paddingVertical: 20,
-            marginBottom: 15,
+            paddingHorizontal: 15,
+            paddingVertical: 15,
+            marginBottom: 10,
 
             justifyContent: 'space-between',
 
@@ -33,18 +33,21 @@ const Task = ({ dispatch, title, id }) => {
         },
         taskText: {
             fontSize: 16,
-            width: '80%',
+            width: '75%',
             display: 'flex',
-            fontFamily: 'RobotoMedium',
+            fontFamily: 'RobotoRegular',
             flexWrap: 'wrap',
-            opacity: isDone ? 0.3 : 1
+            opacity: isDone ? 0.3 : 1,
+            color: '#343434',
         },
+
         deleteIcon: {
             width: 20,
             height: 20,
-            
         },
+
         deleteButton: {
+            marginLeft: 5,
             display: 'flex',
             width: 25,
             height: 25,
@@ -53,12 +56,13 @@ const Task = ({ dispatch, title, id }) => {
         },
 
         icons: {
+            justifyContent: 'space-between',
             flexDirection: 'row',
-            alignItems: 'center'
+            alignItems: 'center',
+            flex: 1
         },
 
         checkbox: {
-            marginLeft: 15,
             width: 25,
             height: 25,
         }
@@ -93,7 +97,5 @@ const Task = ({ dispatch, title, id }) => {
     );
 
 }
-
-
 
 export default Task;
