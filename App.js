@@ -5,17 +5,26 @@ import {
   Keyboard,
   SafeAreaView,
   FlatList,
+  Text,
+  Dimensions,
+  Animated,
+  useWindowDimensions
 } from 'react-native'
-
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import SwipeableFlatList from 'react-native-swipeable-list'
 import { useFonts } from 'expo-font'
-
 import Header from './Components/Header'
 import Task from './Components/Task'
 import WriteTask from './Components/WriteTask'
 
+
 export default function App() {
+
+  const { width, height } = useWindowDimensions()
+
+  const touch = React.useRef(
+    new Animated.ValueXY({ x: 50, y: 50 })
+  ).current
 
   function reducer(state, action) {
 
@@ -44,7 +53,7 @@ export default function App() {
   const [state, dispatch] = React.useReducer(reducer, [
     { text: 'Feed your dog', id: 'justrandom' },
     { text: 'Bring the water', id: 'idkyk2005zxc' },
-    { text: 'final', id: 'ilovecowboybebop1998' },
+    { text: 'final last', id: 'ilovecowboybebop1998' },
   ])
 
   const [loaded] = useFonts({
@@ -61,34 +70,63 @@ export default function App() {
   }
 
 
-
   return (
-    <SafeAreaView style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.wrapper}>
 
         <Header modalVisible={modalVisible} setModalVisible={setModalVisible} />
 
-        <View style={styles.tasks}>
-          <FlatList
+        {/* <View style={styles.tasks}>
+          <SwipeableFlatList
             style={styles.scroll}
             data={state}
             renderItem={({ item }) => <Task dispatch={dispatch} title={item.text} id={item.id} />}
-            keyExtractor={(item) => item.id}
+            renderHiddenItem={() => <Text>hehee</Text>}
+            keyExtractor={(item, idx) => item.id + idx}
+            rightOpenValue={-75}
+            leftOpenValue={75}
           />
+        </View>
+
+        <WriteTask taskItems={state} dispatch={dispatch} setModalVisible={setModalVisible} modalVisible={modalVisible} /> */}
+
+        <View
+          onStartShouldSetResponder={() => true}
+          onResponderMove={(event) => {
+            touch.setValue({
+              x: event.nativeEvent.locationX,
+              y: event.nativeEvent.locationY,
+            })
+          }}
+          style={{ flex: 1 }}
+        >
+          <Animated.View
+            style={{
+              height: 40,
+              width: 40,
+              position: 'absolute',
+              left: Animated.subtract(touch.x, 20),
+              top: Animated.subtract(touch.y, 20),
+              backgroundColor: 'yellow',
+              borderRadius: 20,
+              borderWidth: 2,
+              borderColor: '333'
+            }}>
+          </Animated.View>
+
         </View>
 
       </View>
 
 
-          <WriteTask taskItems={state} dispatch={dispatch} setModalVisible={setModalVisible} modalVisible={modalVisible}/>
-
-    </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: '95%',
     backgroundColor: '#FFFAFA',
   },
 
@@ -97,17 +135,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  tasksContainer: {
+  tasks: {
     justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 40,
     flex: 1,
   },
 
   scroll: {
-    height: '85%',
     paddingHorizontal: 20,
-    paddingTop: 15,
-    paddingBottom: 15,
   },
 })

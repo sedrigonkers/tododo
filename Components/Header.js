@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Image, Modal, Button } from 'react-native';
-import { BlurView } from 'expo-blur'
+import { View, StyleSheet, TouchableOpacity, Text, Image, Modal, Button, Platform } from 'react-native';
 import moment from 'moment'
 
 
@@ -23,12 +22,12 @@ const Header = ({ modalVisible, setModalVisible }) => {
 
 const styles = StyleSheet.create({
     header: {
-        paddingTop: 50,
+        paddingTop: Platform.OS === 'android' ? 50 : 0,
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
         fontFamily: 'PacificoRegular',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
     },
 
     date: {

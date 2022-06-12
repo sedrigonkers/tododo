@@ -27,50 +27,55 @@ const WriteTask = ({ dispatch, setModalVisible, modalVisible }) => {
     return (
 
         <Modal
-        animationInTiming={50}
-        animationOutTiming={50}
-        avoidKeyboard={true}
-        hasBackdrop={true}
-        backdropOpacity={0.6}
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
+            animationInTiming={50}
+            animationOutTiming={50}
+            avoidKeyboard={true}
+            hasBackdrop={true}
+            backdropOpacity={0.6}
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+                setModalVisible(!modalVisible);
+            }}
+        >
 
-        <Pressable style={styles.modalOverlay} onPress={() => setModalVisible(false)}>
+            <Pressable style={styles.modalOverlay} onPress={() => setModalVisible(false)}>
 
 
-        <View style={styles.modalContainer}>
-            <Pressable style={styles.modalWrapper} >
+                <View style={styles.modalContainer}>
+                    <Pressable style={styles.modalWrapper} >
 
-                <TouchableOpacity style={styles.backArrow} onPress={() => setModalVisible(false)}>
-                    <Image style={styles.backArrowIcon} source={require('../assets/icons/back_arrow.png')} />
-                </TouchableOpacity>
+                        <TouchableOpacity style={styles.backArrow} onPress={() => setModalVisible(false)}>
+                            <Image style={styles.backArrowIcon} source={require('../assets/icons/back_arrow.png')} />
+                        </TouchableOpacity>
 
-                <View style={styles.inputWrapper}>
-                    <TextInput
-                        value={task}
-                        style={styles.input}
-                        placeholder='Write your task'
-                        placeholderTextColor='#9f6868'
-                        onChangeText={(text) => setTask(text)}
-                        selectionColor='#9f6868'
-                    />
+                        <View style={styles.inputWrapper}>
+                            <TextInput
+                                value={task}
+                                style={styles.input}
+                                placeholder='Write your task'
+                                placeholderTextColor='#9f6868'
+                                onChangeText={(text) => setTask(text)}
+                                selectionColor='#9f6868'
+                            />
+                        </View>
+
+                        <View style={styles.buttons}>
+                            <TouchableOpacity style={styles.CancelButton} onPress={handleAddTask}>
+                                <View style={styles.CancelIcon}>
+                                </View>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.addTaskButton} onPress={handleAddTask}>
+                                <View style={styles.addTaskIcon}>
+                                    <Text style={styles.addTaskButtonText}>Add task</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </Pressable>
                 </View>
-
-                <TouchableOpacity style={styles.addTaskButton} onPress={handleAddTask}>
-                    <View style={styles.addTaskIcon}>
-                        {/* <Image style={styles.plus} source={require('../assets/icons/plus.png')} /> */}
-                        <Text style={styles.addTaskButtonText}>Add task</Text>
-                    </View>
-                </TouchableOpacity>
-
             </Pressable>
-        </View>
-        </Pressable>
 
         </Modal>
 
@@ -79,9 +84,13 @@ const WriteTask = ({ dispatch, setModalVisible, modalVisible }) => {
 
 const styles = StyleSheet.create({
 
+    buttons: {
+        flexDirection: 'row'
+    },
+
     modalOverlay: {
         flex: 1
-      },
+    },
 
     modalContainer: {
         flex: 1,
@@ -93,7 +102,7 @@ const styles = StyleSheet.create({
 
     modalWrapper: {
         width: '80%',
-        
+
         paddingVertical: 40,
         paddingVHorizontal: 40,
 

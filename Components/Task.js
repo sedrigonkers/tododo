@@ -7,8 +7,16 @@ import {
     Image,
 } from 'react-native';
 import CheckBox from 'expo-checkbox';
+import Swipeable from 'react-native-gesture-handler/Swipeable'
 
 const Task = ({ dispatch, title, id }) => {
+
+    const renderLeftActions = (progress, dragX) => {
+        const trans = dragX.interpolate({
+            inputRange: [0, 50, 100, 101],
+            outputRange: [-20, 0, 0, 1],
+        });
+    }
 
     const [isDone, setIsDone] = React.useState(false)
 
@@ -23,19 +31,22 @@ const Task = ({ dispatch, title, id }) => {
             borderRadius: 10,
 
             paddingHorizontal: 15,
-            paddingVertical: 15,
+            paddingVertical: 18,
             marginBottom: 10,
+            paddingVertical: 20,
+
 
             justifyContent: 'space-between',
 
             alignItems: 'center',
             flexDirection: 'row',
+
         },
         taskText: {
-            fontSize: 16,
+            fontSize: 17,
             width: '75%',
             display: 'flex',
-            fontFamily: 'RobotoRegular',
+            fontFamily: 'RobotoMedium',
             flexWrap: 'wrap',
             opacity: isDone ? 0.3 : 1,
             color: '#343434',
@@ -78,7 +89,9 @@ const Task = ({ dispatch, title, id }) => {
     }
 
     return (
+
         <View style={styles.task}>
+
 
             <Text style={styles.taskText}>{title}</Text>
 
@@ -86,14 +99,18 @@ const Task = ({ dispatch, title, id }) => {
                 <TouchableOpacity style={styles.deleteButton} onPress={handleDeleteTask}>
                     <Image style={styles.deleteIcon} source={require('../assets/icons/trash.png')} />
                 </TouchableOpacity>
-                <CheckBox
-                    value={isDone}
-                    onValueChange={setIsDone}
-                    style={styles.checkbox}
-                    color='#9F6868'
-                />
+                    <CheckBox
+                        value={isDone}
+                        onValueChange={setIsDone}
+                        style={styles.checkbox}
+                        color='#9F6868'
+                        backgroundColor='#111111'
+                    />
             </View>
+
+
         </View>
+
     );
 
 }
